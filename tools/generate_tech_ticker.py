@@ -104,13 +104,31 @@ def download_svg(slug: str) -> bytes:
         with open(cache_path, "rb") as f:
             return f.read()
 
-    url = ICON_URL.format(slug=slug)
-    with urllib.request.urlopen(url, timeout=30) as resp:
-        data = resp.read()
+    # Multiple sources (fallback)
+    urls = [
+        f"https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/{slug}.svg",
+        f"https://unpkg.com/simple-icons@v11/icons/{slug}.svg",
+        f"https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/{slug}.svg",
+    ]
 
-    with open(cache_path, "wb") as f:
-        f.write(data)
-    return data
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; GitHubActions; +https://github.com)",
+        "Accept": "image/svg+xml,text/plain,*/*",
+    }
+
+    last_err = None
+    for url in urls:
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = resp.read()
+            with open(cache_path, "wb") as f:
+                f.write(data)
+            return data
+        except Exception as e:
+            last_err = e
+
+    raise last_err
 
 def svg_to_png(svg_bytes: bytes, size: int) -> Image.Image:
     png_bytes = cairosvg.svg2png(bytestring=svg_bytes, output_width=size, output_height=size)
