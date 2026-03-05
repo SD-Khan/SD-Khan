@@ -63,7 +63,7 @@ TECH = [
     ("DynamoDB", "awsdynamodb"),
     ("RDS", "awsrds"),
     ("EKS", "awsecs"),
-    {"ApiGateway", "apigateway"}
+    {"ApiGateway", "apigateway"},
 
     # GCP
     ("GCP", "googlecloud"),
