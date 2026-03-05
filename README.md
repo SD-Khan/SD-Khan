@@ -1,6 +1,9 @@
 # saad-khan<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:111827,100:2563eb&height=210&section=header&text=Saad%20Khan&fontSize=46&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Software%20Architect%20%7C%20AI%20Systems%20Architect%20%7C%20Cloud%20Platforms&descAlignY=62&descSize=18" />
 
 <p align="center">
+  <img src="./assets/SD-Khan.png" width="140" style="border-radius: 50%;" alt="Saad Khan" />
+</p>
+<p align="center">
 I design and lead delivery of <b>cloud-native platforms</b>, <b>AI systems</b>, and <b>enterprise architectures</b> — with strong emphasis on <b>modularity</b>, <b>governance</b>, <b>security</b>, and <b>operational excellence</b>.
 </p>
 
